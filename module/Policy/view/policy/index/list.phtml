@@ -1,0 +1,44 @@
+<?php
+
+$title = 'All Policies';
+
+$this->headTitle($title);
+
+?>
+
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Policy Number</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Premium</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($policies as $policy) : ?>
+
+      <tr>
+        <td><?= $this->escapeHtml($policy->getId()) ?></td>
+        <td><?= $this->escapeHtml($policy->getFirstName()) ?></td>
+        <td><?= $this->escapeHtml($policy->getLastName()) ?></td>
+        <td><?= $this->escapeHtml($policy->getPolicyNumber()) ?></td>
+        <td><?= $this->escapeHtml($policy->getStartDate()) ?></td>
+        <td><?= $this->escapeHtml($policy->getEndDate()) ?></td>
+        <td><?= $this->escapeHtml($policy->getPremium()) ?></td>
+        <td>
+          <a class="btn btn-warning" href="<?php echo $this->url('policy', ['action' => 'edit', 'id' => $policy->getId()]) ?>">Edit</a>
+          <a class="btn btn-danger" href="<?php echo $this->url('policy', ['action' => 'delete', 'id' => $policy->getId()]) ?>">Delete</a>
+        </td>
+      </tr>
+
+    <?php endforeach ?>
+  </tbody>
+</table>

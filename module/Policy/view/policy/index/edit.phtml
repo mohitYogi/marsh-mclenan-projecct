@@ -1,0 +1,109 @@
+<?php
+$form = $this->form;
+$form->prepare();
+
+$form->get('first_name')->setAttributes([
+    'class' => 'form-control',
+    'placeholder' => 'John'
+]);
+
+$form->get('last_name')->setAttributes([
+    'class' => 'form-control',
+    'placeholder' => 'Doe',
+]);
+
+$form->get('start_date')->setAttributes([
+    'class' => 'form-control start-date',
+    'placeholder' => '31-01-2012',
+]);
+
+$form->get('end_date')->setAttributes([
+    'class' => 'form-control end-date',
+    'placeholder' => '15-02-2012',
+]);
+
+$form->get('policy_number')->setAttributes([
+    'class' => 'form-control',
+    'placeholder' => '9839XXX489',
+]);
+
+$form->get('premium')->setAttributes([
+    'class' => 'form-control',
+    'placeholder' => '99.89',
+]);
+
+$form->get('submit')->setAttributes(['class' => 'btn btn-success btn-block']);
+
+$title = 'Edit Policy';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col text-center">
+        <h1><?= $this->escapeHtml($title) ?></h1>
+    </div>
+</div>
+<?php $this->form->setAttribute('action', $this->url('policy', ['action' => 'edit', 'id' => $id])); ?>
+<?= $this->form()->openTag($form); ?>
+<?= $this->formHidden($form->get('id')); ?>
+
+<div class="row">
+    <div class="col">
+        <div class="mb-3 mt-3">
+            <?= $this->formLabel($form->get('first_name')) ?>
+            <?= $this->formElement($form->get('first_name')); ?>
+            <?= $this->formElementErrors()->render($form->get('first_name'), ['class' => 'help-feedback']) ?>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3 mt-3">
+            <?= $this->formLabel($form->get('last_name')) ?>
+            <?= $this->formElement($form->get('last_name')); ?>
+            <?= $this->formElementErrors()->render($form->get('last_name'), ['class' => 'help-feedback']) ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="mb-3 mt-3">
+            <?= $this->formLabel($form->get('start_date')) ?>
+            <?= $this->formElement($form->get('start_date')); ?>
+            <?= $this->formElementErrors()->render($form->get('start_date'), ['class' => 'help-feedback']) ?>
+        </div>
+    </div>
+    <div class="col">
+        <div class="mb-3 mt-3">
+            <?= $this->formLabel($form->get('end_date')) ?>
+            <?= $this->formElement($form->get('end_date')); ?>
+            <?= $this->formElementErrors()->render($form->get('end_date'), ['class' => 'help-feedback']) ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="mb-3 mt-3">
+            <?= $this->formLabel($form->get('policy_number')) ?>
+            <?= $this->formElement($form->get('policy_number')); ?>
+            <?= $this->formElementErrors()->render($form->get('policy_number'), ['class' => 'help-feedback']) ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="mb-3 mt-3">
+            <?= $this->formLabel($form->get('premium')) ?>
+            <?= $this->formElement($form->get('premium')); ?>
+            <?= $this->formElementErrors()->render($form->get('premium'), ['class' => 'help-feedback']) ?>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <?= $this->formSubmit($form->get('submit')); ?>
+    </div>
+    <div class="col">
+        <a href="<?= $this->url('policy', ['action' => 'list']) ?>" class="btn-secondary btn btn-block">Back to list</a>
+    </div>
+</div>
+
+<?= $this->form()->closeTag(); ?>
